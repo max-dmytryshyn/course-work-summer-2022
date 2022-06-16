@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'graphene_django',
     'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken',
     'bakery.apps.BakeryConfig',
     'sensors_data.apps.SensorsDataConfig',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -108,6 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 GRAPHENE = {
     "SCHEMA": "bakeries_conditions_monitoring.schema.schema"
 }
@@ -138,3 +142,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/')
+
+MEDIA_URL = "/assets/"
