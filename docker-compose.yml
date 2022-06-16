@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/posgresql_db:/var/lib/posgresql/data
+    environment:
+      - POSTGRES_DB=course_work_DB
+      - POSTGRES_USER=course_work_user
+      - POSTGRES_PASSWORD=password123
+    container_name: course_work_db
+    ports:
+      - 54320:5432
+
+  backend:
+    build:
+      context: ./Backend
+    volumes:
+      - .:/usr/src/backend
+    environment:
+      - SECRET_KEY=django-insecure-kewin!7bezos$bfcg_66t22zpq1xz-+!(!)uyyq8geke7c4-*!
+      - NAME=course_work_DB
+      - USERNAME=course_work_user
+      - PASSWORD=password123
+    ports:
+      - 8000:8000
+
+    command: bash -c "
+      ls &&
+      cd Backend/bakeries_conditions_monitoring
+      && python manage.py migrate
+      && python manage.py runserver 0.0.0.0:8000
+      "
+    container_name: course_work_backend
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./Frontend
+    volumes:
+      - .:/usr/src/frontend
+    ports:
+      - 3000:3000
+    command: bash -c "
+      cd Frontend
+      && cd bakeries_conditions_monitoring 
+      && npm start 
+      "
+    container_name: course_work_frontend
+    depends_on:
+      - backend
