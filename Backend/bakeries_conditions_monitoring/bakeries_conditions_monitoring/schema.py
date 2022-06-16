@@ -1,3 +1,9 @@
 import graphene
+from bakery.schema import Query as BakeryQuery
 
-schema = graphene.Schema()
+
+class Query(BakeryQuery, graphene.ObjectType):
+    pass
+
+
+schema = graphene.Schema(query=Query)

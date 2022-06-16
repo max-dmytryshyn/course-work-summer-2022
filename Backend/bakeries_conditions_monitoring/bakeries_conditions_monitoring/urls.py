@@ -16,13 +16,13 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from graphene_django.views import GraphQLView
+from bakeries_conditions_monitoring.views import AuthenticatedGraphQLView
 from django.views.decorators.csrf import csrf_exempt
 
 from bakeries_conditions_monitoring import settings
 
 urlpatterns = [
-    path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path("graphql/", csrf_exempt(AuthenticatedGraphQLView.as_view(graphiql=True))),
     path("users/", include("users.urls")),
     path('admin/', admin.site.urls),
 ]
