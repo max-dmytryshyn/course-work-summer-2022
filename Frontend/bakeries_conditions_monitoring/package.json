@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "bakeries_conditions_monitoring",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +12,7 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
     "apollo": "^2.34.0",
+    "axios": "^0.27.2",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "formik": "^2.2.9",

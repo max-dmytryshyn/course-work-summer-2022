@@ -1,0 +1,20 @@
+@import "src/typography/colors";
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.fieldLabel {
+  font-size: 1.6rem;
+}
+
+.fieldInput {
+  border-radius: 5px;
+  border-color: black;
+  border-width: 1.9px;
+  font-size: 1.4rem;
+  padding: 5px;
+  background-color: $white;
+}
