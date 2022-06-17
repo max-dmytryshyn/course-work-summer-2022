@@ -10,7 +10,7 @@ def resolve_bakery_logo_uri(bakery, info):
 class BakeryType(DjangoObjectType):
     class Meta:
         model = Bakery
-        fields = ["name", "address"]
+        fields = ["id", "name", "address", "temperature_records", "humidity_records"]
 
     logo_uri = graphene.String(resolver=resolve_bakery_logo_uri)
 

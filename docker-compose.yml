@@ -27,7 +27,6 @@ services:
       - 8000:8000
 
     command: bash -c "
-      ls &&
       cd Backend/bakeries_conditions_monitoring
       && python manage.py migrate
       && python manage.py runserver 0.0.0.0:8000
