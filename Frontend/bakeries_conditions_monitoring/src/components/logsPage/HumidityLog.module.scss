@@ -1,0 +1,32 @@
+@import "src/typography/colors";
+
+.container {
+  display: flex;
+  border-bottom-style: solid;
+  width: 100%;
+  align-items: center;
+  border-color: $black;
+}
+
+.dateTimeText {
+  margin: 0;
+  border-right-style: solid;
+  padding: 5px 30px;
+  border-color: $black;
+}
+
+.humidityText {
+  margin: 0;
+  text-align: center;
+  padding: 5px 30px;
+}
+
+.lowHumidityContainer {
+  @extend .container;
+  color: $yellow;
+}
+
+.highHumidityContainer {
+  @extend .container;
+  color: $blue;
+}

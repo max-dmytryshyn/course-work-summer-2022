@@ -26,3 +26,23 @@ export const BAKERY_HUMIDITY_LAST_RECORD = gql`
     }
   }
 `;
+
+export const BAKERY_TEMPERATURE_RECORDS = gql`
+  query BakeryTemperatureRecords($bakeryId: Int!, $last: Int) {
+    bakeryTemperatureRecords(bakeryId: $bakeryId, last: $last) {
+      id
+      temperature
+      date
+    }
+  }
+`;
+
+export const BAKERY_HUMIDITY_RECORDS = gql`
+  query BakeryHumidityRecords($bakeryId: Int!, $last: Int) {
+    bakeryHumidityRecords(bakeryId: $bakeryId, last: $last) {
+      id
+      humidity
+      date
+    }
+  }
+`;

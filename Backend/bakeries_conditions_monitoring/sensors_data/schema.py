@@ -21,24 +21,30 @@ class HumiditySensorDataType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    bakery_temperature_records = graphene.List(TemperatureSensorDataType, bakery_id = graphene.Int(required=True))
-    bakery_humidity_records = graphene.List(HumiditySensorDataType, bakery_id = graphene.Int(required=True))
+    bakery_temperature_records = graphene.List(TemperatureSensorDataType, bakery_id = graphene.Int(required=True),
+                                               last = graphene.Int(required=False))
+    bakery_humidity_records = graphene.List(HumiditySensorDataType, bakery_id = graphene.Int(required=True),
+                                            last=graphene.Int(required=False))
     bakery_temperature_last_record = graphene.Field(TemperatureSensorDataType, bakery_id = graphene.Int(required=True))
     bakery_humidity_last_record = graphene.Field(HumiditySensorDataType, bakery_id=graphene.Int(required=True))
 
-    def resolve_bakery_temperature_records(root, info, bakery_id):
+    def resolve_bakery_temperature_records(root, info, bakery_id, last=None):
         bakery = get_object_or_404(Bakery, pk=bakery_id)
         if bakery.owner != info.context.user:
             raise GraphQLError("You have no access to this bakery's records")
         else:
-            return TemperatureSensorData.objects.filter(bakery=bakery).all()
+            if last:
+                return TemperatureSensorData.objects.filter(bakery=bakery).order_by('-date')[:last].all()
+            return TemperatureSensorData.objects.filter(bakery=bakery).order_by('-date').all()
 
-    def resolve_bakery_humidity_records(root, info, bakery_id):
+    def resolve_bakery_humidity_records(root, info, bakery_id, last=None):
         bakery = get_object_or_404(Bakery, pk=bakery_id)
         if bakery.owner != info.context.user:
             raise GraphQLError("You have no access to this bakery's records")
         else:
-            return HumiditySensorData.objects.filter(bakery=bakery).all()
+            if last:
+                return HumiditySensorData.objects.filter(bakery=bakery).order_by('-date')[:last].all()
+            return HumiditySensorData.objects.filter(bakery=bakery).order_by('-date').all()
 
     def resolve_bakery_temperature_last_record(root, info, bakery_id):
         bakery = get_object_or_404(Bakery, pk=bakery_id)

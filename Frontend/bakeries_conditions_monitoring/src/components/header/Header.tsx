@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
     <header className={styles.headerContainer}>
       <Logo width={60} height={60} />
       <HeaderItem path={'/'} label={'Bakeries Status'} />
-      <HeaderItem path={'/bakeries'} label={'Bakeries info'} />
+      <HeaderItem path={'/logs'} label={'Bakeries Logs'} />
       <LogOutItem />
     </header>
   );

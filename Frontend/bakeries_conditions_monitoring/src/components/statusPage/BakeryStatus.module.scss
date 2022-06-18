@@ -1,9 +1,11 @@
 @import "src/typography/colors";
 
 .container {
+  align-self: center;
   display: flex;
   align-items: center;
   border-bottom-style: solid;
+  width: 100%;
 }
 
 .logo {
@@ -19,7 +21,7 @@
 }
 
 .bakeryName {
-  margin: 0px;
+  margin: 0;
   font-size: 2rem;
 }
 

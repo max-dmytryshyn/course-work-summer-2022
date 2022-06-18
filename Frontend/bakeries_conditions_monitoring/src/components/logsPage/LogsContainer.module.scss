@@ -1,0 +1,43 @@
+.container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  border-style: solid;
+  border-bottom-style: none;
+}
+
+.headerContainer {
+  display: flex;
+}
+
+.headerColumn {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+  border-left-style: solid;
+}
+
+.leftHeaderColumn {
+  @extend .headerColumn;
+  border-left: none;
+}
+
+.dataContainer {
+  display: flex;
+}
+
+.dataColumn {
+  width: 100%;
+  text-align: center;
+  border-left-style: solid;
+  border-top-style: solid;
+  font-size: 1.2rem;
+}
+
+.leftDataColumn {
+  @extend .dataColumn;
+  border-left: none;
+}
+

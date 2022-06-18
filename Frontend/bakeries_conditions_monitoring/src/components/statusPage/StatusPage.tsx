@@ -1,6 +1,7 @@
 import React from 'react';
 import { BakeryStatus } from 'components/statusPage/BakeryStatus';
-import { useCurrentUserBakeries } from 'components/statusPage/gql/hooks/useCurrentUserBakeries';
+import { useCurrentUserBakeries } from 'gql/hooks/useCurrentUserBakeries';
+import styles from 'components/statusPage/StatusPage.module.scss';
 
 export const StatusPage: React.FC = () => {
   const { loading, error, bakeries } = useCurrentUserBakeries();
@@ -16,5 +17,5 @@ export const StatusPage: React.FC = () => {
       <BakeryStatus key={bakery.id} id={bakery.id} name={bakery.name} logoUri={bakery.logoUri} />
     );
   });
-  return <>{bakeryStatusItems}</>;
+  return <div className={styles.container}>{bakeryStatusItems}</div>;
 };

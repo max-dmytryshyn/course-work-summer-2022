@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from 'components/statusPage/BakeryStatus.module.scss';
-import { useBakeryTemperatureLastRecord } from './gql/hooks/useBakeryTemperatureLastRecord';
-import { useBakeryHumidityLastRecord } from './gql/hooks/useBakeryHumidityLastRecord';
+import { useBakeryTemperatureLastRecord } from 'gql/hooks/useBakeryTemperatureLastRecord';
+import { useBakeryHumidityLastRecord } from 'gql/hooks/useBakeryHumidityLastRecord';
 
 interface BakeryStatusProps {
   id: number;
@@ -12,7 +12,7 @@ interface BakeryStatusProps {
 export const BakeryStatus: React.FC<BakeryStatusProps> = ({ id, name, logoUri }) => {
   const temperatureQueryResult = useBakeryTemperatureLastRecord(id);
   const humidityQueryResult = useBakeryHumidityLastRecord(id);
-  const refetchInteval = 10000;
+  const refetchInteval: number = 10000;
   setInterval(temperatureQueryResult.refetch, refetchInteval);
   setInterval(humidityQueryResult.refetch, refetchInteval);
   let temperature: number | string = '';
@@ -47,6 +47,7 @@ export const BakeryStatus: React.FC<BakeryStatusProps> = ({ id, name, logoUri })
         return styles.hotTemperatureText;
       }
     }
+    return styles.infoText;
   };
 
   const humidityClass = () => {
@@ -59,7 +60,12 @@ export const BakeryStatus: React.FC<BakeryStatusProps> = ({ id, name, logoUri })
         return styles.highHumidityText;
       }
     }
+    return styles.infoText;
   };
+
+  if (typeof temperature === 'number') {
+    temperature = temperature.toFixed(1);
+  }
 
   return (
     <div className={styles.container}>

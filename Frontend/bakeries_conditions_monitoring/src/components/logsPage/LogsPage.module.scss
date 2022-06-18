@@ -1,0 +1,34 @@
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formSubmitButton {
+  font-size: 1.6rem;
+  padding: 5px 30px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  background: none;
+  border-color: black;
+}
+
+.formSubmitButton:hover {
+  background: black;
+  border-color: white;
+  color: white;
+}
+
+.noBakeryText {
+  text-align: center;
+  font-size: 3rem;
+}
