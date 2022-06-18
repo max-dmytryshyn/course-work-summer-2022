@@ -4,7 +4,7 @@
 #define READ_MODE LOW
 #define MODE_PIN 2
 
-const byte ADRESS = 0xA1;
+const byte ADRESS = 0xA3;
 
 SHT21 sht;
 

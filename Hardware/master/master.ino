@@ -5,6 +5,8 @@
 
 const byte SLAVE1ADRESS = 0xA1;
 const byte SLAVE2ADRESS = 0xA2;
+const byte SLAVE3ADRESS = 0xA3;
+const byte SLAVE4ADRESS = 0xA4;
 
 void sendMessageRequest(byte recevierId) {
  digitalWrite(MODE_PIN, WRITE_MODE); 
@@ -35,6 +37,24 @@ void loop() {
     
     if (serialRequestInfo == 2) {
       sendMessageRequest(SLAVE2ADRESS);
+      delay(30);
+      byte data[11];
+      Serial1.readBytes(data, 11);
+      Serial.write(data, 11);
+      Serial.println();
+    }
+
+    if (serialRequestInfo == 3) {
+      sendMessageRequest(SLAVE3ADRESS);
+      delay(30);
+      byte data[11];
+      Serial1.readBytes(data, 11);
+      Serial.write(data, 11);
+      Serial.println();
+    }
+
+    if (serialRequestInfo == 4) {
+      sendMessageRequest(SLAVE4ADRESS);
       delay(30);
       byte data[11];
       Serial1.readBytes(data, 11);

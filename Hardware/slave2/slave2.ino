@@ -1,21 +1,23 @@
 #include "Wire.h"
+#include "SHT21.h"
 #define WRITE_MODE HIGH
 #define READ_MODE LOW
 #define MODE_PIN 2
 
 const byte ADRESS = 0xA2;
 
-byte bcdToDec(byte value)
-{
-  return (value >> 4) * 10 + (value & 0x0F);
-}
+SHT21 sht;
 
 String getData() {
-  Wire.beginTransmission(0x68);
-  Wire.write(0);
-  Wire.endTransmission();
-  Wire.requestFrom(0x68, 7);
-  return "T-15.5H100";
+  float temperature = sht.getTemperature();
+  sht.reset();
+  unsigned int humidity = sht.getHumidity();
+  sht.reset();
+  String data = "T";
+  data += temperature;
+  data += "H";
+  data += humidity;
+  return data;
 }
 
 void sendMessage() {
@@ -23,7 +25,7 @@ void sendMessage() {
   getData().getBytes(message, 11);
   digitalWrite(MODE_PIN, WRITE_MODE);
   Serial.write(message, 11);
-  delay(11);
+  delay(20);
   digitalWrite(MODE_PIN, READ_MODE);
 }
 
