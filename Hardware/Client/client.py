@@ -84,7 +84,8 @@ if __name__ == "__main__":
             slave_data_bytes_counter += 1
         temperature_start_position = slave_data_string.find('T')
         humidity_start_position = slave_data_string.find('H')
-        temperature = float(slave_data_string[temperature_start_position + 1: humidity_start_position])
+        temperature = round(float(
+            slave_data_string[temperature_start_position + 1: humidity_start_position]), 1)
         humidity = int(slave_data_string[humidity_start_position + 1:])
         return {"temperature": temperature, "humidity": humidity}
 
@@ -104,4 +105,3 @@ if __name__ == "__main__":
         slave_4_data = get_slave_data(4)
         create_temperature_record(slave_4_data["temperature"], 4, auth_header)
         create_humidity_record(slave_4_data["humidity"], 4, auth_header)
-        time.sleep(8)
