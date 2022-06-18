@@ -1,0 +1,59 @@
+@import "src/typography/colors";
+
+.container {
+  display: flex;
+  align-items: center;
+  border-bottom-style: solid;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.infoContainer {
+  border-left-style: solid;
+  padding: 20px;
+}
+
+.bakeryName {
+  margin: 0px;
+  font-size: 2rem;
+}
+
+.infoText {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.coldTemperatureText {
+  @extend .infoText;
+  color: $blue;
+}
+
+.normalTemperatureText {
+  @extend .infoText;
+  color: $black;
+}
+
+.hotTemperatureText {
+  @extend .infoText;
+  color: $red;
+}
+
+.lowHumidityText {
+  @extend .infoText;
+  color: $yellow;
+}
+
+.normalHumidityText {
+  @extend .infoText;
+  color: $black;
+}
+
+.highHumidityText {
+  @extend .infoText;
+  color: $blue;
+}

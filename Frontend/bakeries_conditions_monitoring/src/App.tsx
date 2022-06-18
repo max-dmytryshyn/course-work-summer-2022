@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Header } from 'components/header/Header';
 import { Footer } from 'components/footer/Footer';
 import { LoginPage } from 'components/login/LoginPage';
-import { ConditionsPage } from 'components/conditionsPage/ConditionsPage';
+import { StatusPage } from 'components/statusPage/StatusPage';
 import { NotFoundPage } from './components/notFoundPage/NotFoundPage';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       {isLogenIn && <Header />}
 
       <Routes>
-        <Route path="/" element={isLogenIn ? <ConditionsPage /> : <LoginPage />} />
+        <Route path="/" element={isLogenIn ? <StatusPage /> : <LoginPage />} />
         <Route path={'*'} element={<NotFoundPage />} />
       </Routes>
 

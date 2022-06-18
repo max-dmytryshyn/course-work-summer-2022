@@ -28,28 +28,28 @@ class Query(graphene.ObjectType):
 
     def resolve_bakery_temperature_records(root, info, bakery_id):
         bakery = get_object_or_404(Bakery, pk=bakery_id)
-        if bakery.owner == info.context.user:
+        if bakery.owner != info.context.user:
             raise GraphQLError("You have no access to this bakery's records")
         else:
             return TemperatureSensorData.objects.filter(bakery=bakery).all()
 
     def resolve_bakery_humidity_records(root, info, bakery_id):
         bakery = get_object_or_404(Bakery, pk=bakery_id)
-        if bakery.owner == info.context.user:
+        if bakery.owner != info.context.user:
             raise GraphQLError("You have no access to this bakery's records")
         else:
             return HumiditySensorData.objects.filter(bakery=bakery).all()
 
     def resolve_bakery_temperature_last_record(root, info, bakery_id):
         bakery = get_object_or_404(Bakery, pk=bakery_id)
-        if bakery.owner == info.context.user:
+        if bakery.owner != info.context.user:
             raise GraphQLError("You have no access to this bakery's records")
         else:
             return TemperatureSensorData.objects.filter(bakery=bakery).last()
 
     def resolve_bakery_humidity_last_record(root, info, bakery_id):
         bakery = get_object_or_404(Bakery, pk=bakery_id)
-        if bakery.owner == info.context.user:
+        if bakery.owner != info.context.user:
             raise GraphQLError("You have no access to this bakery's records")
         else:
             return HumiditySensorData.objects.filter(bakery=bakery).last()

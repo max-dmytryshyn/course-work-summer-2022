@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.headerContainer}>
       <Logo width={60} height={60} />
-      <HeaderItem path={'/'} label={'Bakeries conditions'} />
+      <HeaderItem path={'/'} label={'Bakeries Status'} />
       <HeaderItem path={'/bakeries'} label={'Bakeries info'} />
       <LogOutItem />
     </header>
