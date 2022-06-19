@@ -70,7 +70,7 @@ if __name__ == "__main__":
     super_user_username = "test_user"
     super_user_password = "password123"
     auth_token, auth_header = log_in(super_user_username, super_user_password)
-    serial = serial.Serial('COM2', 9600, timeout=5)
+    serial = serial.Serial('COM2', 9600)
 
     def get_slave_data(slave_number):
         command_byte_string = struct.pack("B", slave_number)
