@@ -39,7 +39,7 @@ export const BakeryStatus: React.FC<BakeryStatusProps> = ({ id, name, logoUri })
 
   const temperatureClass = () => {
     if (typeof temperature === 'number') {
-      if (temperature < 10) {
+      if (temperature < 20) {
         return styles.coldTemperatureText;
       } else if (temperature < 30) {
         return styles.normalTemperatureText;

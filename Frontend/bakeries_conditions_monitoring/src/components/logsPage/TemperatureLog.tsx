@@ -10,9 +10,9 @@ interface TemperatureLogProps {
 export const TemperatureLog: React.FC<TemperatureLogProps> = ({ temperature, recordDate }) => {
   const { date, time } = parseDate(recordDate);
   const containerClass = () => {
-    if (temperature < 15) {
+    if (temperature < 20) {
       return styles.coldTemperatureContainer;
-    } else if (temperature < 25) {
+    } else if (temperature < 30) {
       return styles.container;
     } else {
       return styles.hotTemperatureContainer;
